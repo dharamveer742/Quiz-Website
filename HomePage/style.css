@@ -4,6 +4,9 @@
 
 
 }
+#sear{
+   display:inline;
+}
 
 body {
     font-family: Quicksand, Helvetica, Arial;
@@ -47,7 +50,7 @@ i {
 
 a{
     text-decoration: none;
-    color: rgba(122, 16, 221, 0.887);
+    color: rgba(37, 39, 53, 0.895);
     
 }
 
@@ -64,7 +67,7 @@ a{
     float: right;
     display: inline;
     line-height: 50px;
-    margin-right:2%;
+    margin-right:3%;
     text-align: center;
     margin-top:5px;
 
@@ -154,27 +157,15 @@ input {
     display:inline;
     height:100%;
     border-bottom: 2px solid rgba(133, 38, 222, 0.887);
-    color: rgba(133, 38, 222, 0.887);
+    
     display:flex;
     justify-content: center;
     align-items: center;
     padding-left: 1px;
-    
-    /*
-    display:flex;
-    justify-content: center;
-    align-items: center;
-    display:inline-block;
-    height:60px;*/
-
-
-  /*  border-bottom: 2px solid rgba(133, 38, 222, 0.887);
-    padding-top: 19px;
-    padding-bottom: 20px;
-
-    padding-left: 5 px;
-    padding-right: 8px;
-    color: rgba(133, 38, 222, 0.887);  */
+       
+}
+#house a{
+    color: rgba(133, 38, 222, 0.887);
 }
 #score{
     display:inline;
