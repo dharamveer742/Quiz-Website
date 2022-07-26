@@ -1,0 +1,93 @@
+*{
+    margin:0px;
+    padding:0px;
+    box-sizing:border-box;
+}
+.container{
+    height:100vh;
+    width:100%;
+    background-image:linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7));
+}
+#contact{
+    text-align:center;
+    padding-top:10px;
+    color:white;
+}
+hr{
+    margin-top:10px;
+    margin-bottom: 10px;
+   
+}
+.main{
+   
+    display:flex;
+    justify-content: center;
+   
+
+}
+.formGroup{
+    margin-top:18px;
+    width:40%;
+    
+    background-color:rgba(27,27,50,0.8) ;
+}
+input{
+    display:block;
+    margin-top:3px;
+    margin-left:30px;
+    width:80%;
+    height:30px;
+}
+textarea{
+    display:block;
+    margin-top:3px;
+    margin-left:30px;
+    width:80%;
+    height:70px;
+}
+.details{
+    margin-top:8px;
+    display:block;
+    margin-left:30px;
+    color:white;
+}
+#developerTeam{
+    display:flex;
+    justify-content:space-evenly;
+    
+    margin-top:5px;
+}
+.team{
+    display:inline-block;
+    width:150px;
+    height:150px;
+   border:2px solid red;
+    border-radius: 50%;
+    overflow:hidden;
+   background-color:grey
+}
+.team img{
+    padding-top:5px;
+    width:100%;
+    height:60%;
+}
+#teamD{
+    margin-top:14px;
+    text-align:center;
+    color:white;
+}
+button{
+    padding:8px ;
+    margin-bottom:20px;
+    width:80%;
+    margin-top:20px;
+    margin-left:30px;
+    color:white;
+    background-color: #37af65;
+    border:none;
+
+}
+
+.team label{
+   margin-left:20px;
+}
