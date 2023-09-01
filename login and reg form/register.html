@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"
+      integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <main>
+      <form>
+        <input id="nameInp" placeholder="enter Name" type="text" />
+        <br />
+        <input id="emailInp" placeholder="enter email" type="email" />
+        <br />
+        <input id="userInp" placeholder="enter username" type="text" />
+        <br />
+        <input id="passInp" placeholder="enter password" type="password" />
+        <br />
+        <button id="sub_btn">Signup</button>
+        <a href="./login.html">already have an account</a>
+      </form>
+    </main>
+
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-app.js";
+
+      const firebaseConfig = {
+        apiKey: "AIzaSyDSJjVlLma734LDSl0VUdGCjEJynNG51jg",
+        authDomain: "authentication-f967b.firebaseapp.com",
+        databaseURL: "https://authentication-f967b-default-rtdb.firebaseio.com",
+        projectId: "authentication-f967b",
+        storageBucket: "authentication-f967b.appspot.com",
+        messagingSenderId: "262842114705",
+        appId: "1:262842114705:web:8b2344e5252e75190a5530",
+        measurementId: "G-4SZG49Q2NV",
+      };
+
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+
+      import {
+        getDatabase,
+        ref,
+        set,
+        child,
+        get,
+        update,
+        remove,
+      } from "https://www.gstatic.com/firebasejs/10.3.1/firebase-database.js";
+
+      const db = getDatabase();
+
+      //  references  //
+      const name = document.getElementById("nameInp");
+      const email = document.getElementById("emailInp");
+      const username = document.getElementById("userInp");
+      const pass = document.getElementById("passInp");
+      const submit = document.getElementById("sub_btn");
+
+      // validation
+
+      function isEmptyOrSpaces(str) {
+        return str == null || str.match(/^ *$/) !== null;
+      }
+
+      function Validation() {
+        if (
+          isEmptyOrSpaces(name.value) ||
+          isEmptyOrSpaces(email.value) ||
+          isEmptyOrSpaces(username.value)
+        ) {
+          return false;
+        }
+        let nameregex = /^[a-zA-Z]+$/;
+        let emailregex = /^[a-zA-Z0-9]+@(gmail|yahoo|outlook)\.com$/;
+        let userregex = /^[a-zA-Z0-9]{5,}$/;
+        if (!nameregex.test(name.value)) {
+          alert("the name should contain only alphabets");
+          return false;
+        }
+        if (!emailregex.test(email.value)) {
+          alert("enter a valid email");
+          return false;
+        }
+        if (!userregex.test(username.value)) {
+          alert(
+            "username can only be alphanumeric\n username must be atleast 5 characters\n username cannot contain"
+          );
+          return false;
+        }
+
+        return true;
+      }
+
+      function RegisterUser(e) {
+        e.preventDefault();
+        if (!Validation()) {
+          return;
+        }
+        const dbRef = ref(db);
+
+        get(child(dbRef, "UsersList/" + username.value)).then((snapshot) => {
+          if (snapshot.exists()) {
+            alert("Account Already Exist");
+          } else {
+            set(ref(db, "UsersList/" + username.value), {
+              fullname: name.value,
+              email: email.value,
+              username: username.value,
+              password: encPass(pass.value),
+            })
+              .then(() => {
+                alert("user added successfully");
+              })
+              .catch((error) => {
+                alert("error" + error);
+              });
+          }
+        });
+      }
+
+      // password Encryption
+      function encPass() {
+        var pass12 = CryptoJS.AES.encrypt(pass.value, pass.value);
+        return pass12.toString();
+      }
+
+      submit.addEventListener("click", RegisterUser);
+    </script>
+  </body>
+</html>

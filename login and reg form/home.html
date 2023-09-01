@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Document</title>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js" integrity="sha512-E8QSvWZ0eCLGk4km3hxSsNmGWbLtSCSUcewDQPQWZF6pEU8GlT8a5fF32wOl1i8ftdMhssTrF/OhyGWwonTcXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+
+   <main>
+       <a id="userlink">
+            Username 
+       </a>
+       <br>
+       <a id="signoutlink">
+          SignOut
+       </a>
+       <br>
+       <h3 id="hh"></h3>
+
+   </main>
+   <script>
+    let userlink = document.getElementById('userlink');
+    let signoutlink = document.getElementById('signoutlink');
+    let header = document.getElementById("hh");
+    var currentuser = null;
+
+    function getUsername(){
+        let keepLoggedIn = localStorage.getItem("keepLoggedIn");
+        if(keepLoggedIn == "yes"){
+            currentuser = JSON.parse(localStorage.getItem('user'))
+        }
+        else{
+            currentuser = JSON.parse(sessionStorage.getItem('user'));
+        }
+    }
+    function signOut(){
+        sessionStorage.removeItem("user");
+        localStorage.removeItem("user");
+        localStorage.removeItem("keepLoggedIn");
+        window.location  = "home.html";
+    }
+
+    // window loads
+
+    window.onload = function(){
+        getUsername();
+        if(currentuser == null){
+            userlink.innerText="Create new Account";
+            userlink.href="register.html";
+
+            signoutlink.innerText="Login";
+            signoutlink.href="login.html";
+
+        }
+        else{
+            userlink.innerText=currentuser.username;
+            userlink.href="#";
+            header.innerText="Welcome"+currentuser.fullname;
+            signoutlink.innerText="signout";
+            signoutlink.href="javascript:signOut()";
+        }
+    }
+
+   </script>
+
+</body>
+</html>
