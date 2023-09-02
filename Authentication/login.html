@@ -16,14 +16,65 @@
       integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
       crossorigin="anonymous"
     />
+    <style>
+      *{
+        box-sizing: border-box;
+        margin: 0px;
+      }
+      body{
+        height:100vh;
+        width:100vw;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        background-image: linear-gradient( 115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7) );
+        background-size:cover;
+      }
+      
+      form{
+        
+        padding:35px 35px;
+        display:flex;
+        flex-direction: column;
+        row-gap: 15px;
+        background-color:rgba(27,27,50,0.8);
+        border-radius: 5px;
+      }
+      
+      input{
+        height: 25px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding-left: 8px;
+      }
+      button{
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgba(15, 190, 15, 0.84);
+        color:white;
+        cursor:pointer;
+      }
+      div{
+        color:white;
+      }
+      form > a{
+        text-decoration: none;
+        color:white;
+        font-size: larger;
+       padding-left: 10px;
+      }
+    </style>
   </head>
   <body>
     <main>
       <form>
-        <input id="userInp" placeholder="enter username" type="text" />
-        <br />
-        <input id="passInp" placeholder="enter password" type="password" />
-        <br />
+
+        <input id="userInp" required  placeholder="enter username" type="text" />
+        
+        <input id="passInp" required placeholder="enter password" type="password" />
+        
         <div class="custom-control custom-switch">
           <input
             type="checkbox"
@@ -34,8 +85,12 @@
             >keep me logged in</label
           >
         </div>
-        <button id="sub_btn">LogIn</button>
-        <a href="./register.html">want to register</a>
+        <button id="sub_btn">Log in </button>
+
+        <a href="./register.html"> I want to register </a>
+
+        
+
       </form>
     </main>
 
@@ -76,7 +131,15 @@
         // handle empty password and email
       function AuthenticateUser(e){
         e.preventDefault();
-        console.log("hello");
+        if(username==null || username.value==""){
+          alert("enter username");
+          return;
+        }
+        if(pass==null || pass.value==""){
+          alert("enter password");
+          return;
+        }
+        
         const dbref = ref(db);
         
         get(child(dbref, "UsersList/" + username.value)).then((snapshot) => {
@@ -107,11 +170,11 @@
         let keepLoggedIn = document.getElementById("customSwitch1");
         if (!keepLoggedIn) {
           sessionStorage.setItem("user", JSON.stringify(user)); // data will be sustain if session(website is open) is active
-          window.location = "home.html";
+          window.location = "../index.html";
         } else {
           localStorage.setItem("keepLoggedIn", "yes");
           localStorage.setItem("user", JSON.stringify(user));
-          window.location = "home.html";
+          window.location = "../index.html";
         }
       }
 
@@ -120,6 +183,7 @@
     </script>
   </body>
 </html>
+
 <!--
     CryptoJS is a js library used for encrypting and decrypting data
     CryptoJS.AES.encrypt(plain,secretkey)

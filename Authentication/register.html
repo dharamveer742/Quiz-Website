@@ -10,20 +10,68 @@
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <style>
+      *{
+        box-sizing: border-box;
+        margin: 0px;
+      }
+      body{
+        height:100vh;
+        width:100vw;
+        display:flex;
+        justify-content: center;
+        align-items:center;
+        background-image: linear-gradient( 115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7) );
+        background-size:cover;
+      }
+      
+      form{
+        
+        padding:35px 35px;
+        display:flex;
+        flex-direction: column;
+        row-gap: 12px;
+        background-color:rgba(27,27,50,0.8);
+        border-radius: 5px;
+      }
+      a{
+        text-decoration: none;
+        color:white;
+        font-size: larger;
+      }
+      input{
+        height: 25px;
+        border-radius: 5px;
+        border: none;
+        outline: none;
+        padding-left: 8px;
+      }
+      button{
+        border: none;
+        height: 30px;
+        border-radius: 5px;
+        background-color: rgba(15, 190, 15, 0.84);
+        color:white;
+        cursor:pointer;
+      }
+      
+    </style>
+
   </head>
   <body>
     <main>
       <form>
-        <input id="nameInp" placeholder="enter Name" type="text" />
-        <br />
-        <input id="emailInp" placeholder="enter email" type="email" />
-        <br />
-        <input id="userInp" placeholder="enter username" type="text" />
-        <br />
-        <input id="passInp" placeholder="enter password" type="password" />
-        <br />
-        <button id="sub_btn">Signup</button>
-        <a href="./login.html">already have an account</a>
+        <input id="nameInp" placeholder="enter Name" type="text"/>
+        
+        <input required id="emailInp" placeholder="enter email" type="email"/>
+        
+        <input required id="userInp" placeholder="enter username" type="text"/>
+        
+        <input required id="passInp" placeholder="enter password" type="password"/>
+        
+        <button id="sub_btn" > Sign up</button>
+        
+        <a href="./login.html">Already have an account</a>
       </form>
     </main>
 
@@ -67,15 +115,17 @@
       // validation
 
       function isEmptyOrSpaces(str) {
-        return str == null || str.match(/^ *$/) !== null;
+        return str == null || str=="";
       }
 
       function Validation() {
         if (
           isEmptyOrSpaces(name.value) ||
           isEmptyOrSpaces(email.value) ||
-          isEmptyOrSpaces(username.value)
+          isEmptyOrSpaces(username.value)||
+          isEmptyOrSpaces(pass.value)
         ) {
+          alert("Empty field");
           return false;
         }
         let nameregex = /^[a-zA-Z]+$/;
@@ -117,7 +167,8 @@
               password: encPass(pass.value),
             })
               .then(() => {
-                alert("user added successfully");
+                alert("Account created successfully");
+                window.location="login.html";
               })
               .catch((error) => {
                 alert("error" + error);
@@ -131,7 +182,6 @@
         var pass12 = CryptoJS.AES.encrypt(pass.value, pass.value);
         return pass12.toString();
       }
-
       submit.addEventListener("click", RegisterUser);
     </script>
   </body>

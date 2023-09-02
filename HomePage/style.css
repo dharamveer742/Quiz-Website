@@ -204,8 +204,10 @@ input {
 
 /* break point smartphone  510px */
 
-@media screen and (max-width: 570px) and (min-width:0px){    /* 18 px diffrence  */
-
+@media screen and (max-width: 570px) and (min-width:0px){    
+    #firstpart{
+        width:40%;
+    }
     .navList #house,#score,input{
         display:none;
     } 
@@ -294,9 +296,7 @@ input {
         height:203px;
         display:inline-block;
         margin-left:2.5%;
-        margin-right:0%;
-       
-        
+        margin-right:0%; 
     }
 }
 
@@ -316,8 +316,21 @@ input {
         height:203px;
         display:inline-block;
         margin-left:1.5%;
-        margin-right:0%;
-       
-        
+        margin-right:0%;   
     }
+}
+
+
+#userlink{
+    padding:5px;
+    margin-left:5px;
+    background-color: rgba(185, 190, 218, 0.635);
+    border-radius: 5px;
+}
+#signoutlink{
+    padding:5px ;
+    margin-left:25px;
+    background-color: #8854c0;
+    color:white;
+    border-radius: 5px;
 }
