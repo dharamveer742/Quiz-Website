@@ -166,12 +166,16 @@
       // login
 
       function login(user) {
-       
-        let keepLoggedIn = document.getElementById("customSwitch1");
+        
+        let keepLoggedIn = document.getElementById("customSwitch1").checked;
+        
+        
         if (!keepLoggedIn) {
+          
           sessionStorage.setItem("user", JSON.stringify(user)); // data will be sustain if session(website is open) is active
           window.location = "../index.html";
         } else {
+          
           localStorage.setItem("keepLoggedIn", "yes");
           localStorage.setItem("user", JSON.stringify(user));
           window.location = "../index.html";

@@ -4,7 +4,7 @@
     box-sizing:border-box;
 }
 .container{
-    height:100vh;
+   
     width:100%;
     background-image:linear-gradient(115deg, rgba(58, 58, 158, 0.8), rgba(136, 136, 206, 0.7));
 }
@@ -28,7 +28,7 @@ hr{
 .formGroup{
     margin-top:18px;
     width:40%;
-    
+    border-radius: 5px;
     background-color:rgba(27,27,50,0.8) ;
 }
 input{
@@ -37,6 +37,9 @@ input{
     margin-left:30px;
     width:80%;
     height:30px;
+    border:none;
+    border-radius: 5px;
+    padding: 10px;
 }
 textarea{
     display:block;
@@ -44,6 +47,10 @@ textarea{
     margin-left:30px;
     width:80%;
     height:70px;
+    border:none;
+    border-radius: 5px;
+    padding: 10px;
+
 }
 .details{
     margin-top:8px;
@@ -61,7 +68,7 @@ textarea{
     display:inline-block;
     width:150px;
     height:150px;
-   border:2px solid red;
+   border:2px solid rgba(27,27,50,0.8) ;;
     border-radius: 50%;
     overflow:hidden;
    background-color:grey
@@ -85,9 +92,11 @@ button{
     color:white;
     background-color: #37af65;
     border:none;
+    border-radius: 5px;
 
 }
 
 .team label{
    margin-left:20px;
+   color:white;
 }
