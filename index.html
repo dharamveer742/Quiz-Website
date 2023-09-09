@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="./HomePage/style.css" />
+    <link rel="stylesheet" type="text/css" href="./index.css"/>
     <link
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css"
@@ -216,47 +216,42 @@
           <h4>Career Pathways</h4>
         </div>
       </div>
+      
+      <footer>
+        <div class="container">
+          <div class="footerc">
+            <h3>
+              Copyright © 2023. All rights are reserved
+            </h3>
+            <div class="footerc__socials">
+              <a
+                aria-label="linkedin"
+                target="_blank"
+                
+                href="https://www.linkedin.com/in/dharamveer-singh-033284229/"
+              >
+              <img  style="width:30px; height: 30px;" src="./Images Quiz/linkedin.svg">
+              </a>
+              <a
+                aria-label="github"
+                target="_blank"
+                
+                href="https://github.com/dharamveer742"
+              >
+              <img style="width:30px; height: 30px;" src="./Images Quiz/github.svg">
+              </a>
+            </div>
+          </div>
+        </div>
+      </footer>
+    
+
     </div>
-    <script>
-      let userlink = document.getElementById("userlink");
-      let signoutlink = document.getElementById("signoutlink");
-      //let header = document.getElementById("hh");
-      var currentuser = null;
 
-      function getUsername() {
-        let keepLoggedIn = localStorage.getItem("keepLoggedIn");
-        if (keepLoggedIn == "yes") {
-          currentuser = JSON.parse(localStorage.getItem("user"));
-        } else {
-          currentuser = JSON.parse(sessionStorage.getItem("user"));
-        }
-      }
-      function signOut() {
-        sessionStorage.removeItem("user");
-        localStorage.removeItem("user");
-        localStorage.removeItem("keepLoggedIn");
-        window.location = "index.html";
-      }
+    <script src="./Authentication/index.js" > </script>
+      
 
-      // window loads
-
-      window.onload = function () {
-        getUsername();
-        if (currentuser == null) {
-          userlink.innerText = "Sign up";
-          userlink.href = "./Authentication/register.html";
-
-          signoutlink.innerText = "Login";
-          signoutlink.href = "./Authentication/login.html";
-        } else {
-          userlink.innerText = currentuser.username;
-          userlink.href = "#";
-          
-          signoutlink.innerText = "Sign out";
-          signoutlink.href = "javascript:signOut()";
-        }
-      };
-    </script>
+    
 
     
 

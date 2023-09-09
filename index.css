@@ -1,8 +1,7 @@
 * {
     margin: 0px;
     padding: 0px;
-
-
+    box-sizing: border-box;
 }
 #sear{
    display:inline;
@@ -333,4 +332,50 @@ input {
     background-color: #8854c0;
     color:white;
     border-radius: 5px;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: rgba(90, 50, 126, 0.796);;
+    padding: 2rem 1.5rem;
+    width: 100%
+}
+
+
+footer h3 {
+    color: #fff;
+    font-size: 1.3rem
+}
+
+.footerc {
+    align-items: center;
+    display: flex;
+    justify-content: space-between
+}
+
+@media (max-width: 550px) {
+    .footerc {
+        flex-wrap:wrap;
+        gap: 2rem;
+        justify-content: center;
+        text-align: center
+    }
+}
+
+.footerc__socials {
+    align-items: center;
+    display: flex;
+    gap: 2rem;
+    justify-content: center;
+    margin-top: 1rem
+}
+
+
+
+.footerc__socials a:hover {
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    transition: all .2s ease-in-out
 }
